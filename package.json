@@ -1,0 +1,22 @@
+{
+  "name": "node_mandatory_1",
+  "version": "1.0.0",
+  "description": "Mandatory 1 assignment with documentation.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/752zombie/Node_Mandatory_1.git"
+  },
+  "author": "Magnus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/752zombie/Node_Mandatory_1/issues"
+  },
+  "homepage": "https://github.com/752zombie/Node_Mandatory_1#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
