@@ -1,0 +1,30 @@
+
+    <h3>What is Node.js</h3>
+    <p>
+        Node.js is a JavaScript runtime which means that you can run JavaScript locally without
+        a browser. A common use for Node.js is to create and run servers written in JavaScript.
+    </p>
+    <h3>Setup and basics</h3>
+    <p>
+        First you need to download Node.js using <a href="https://nodejs.org/en/download/" target="_blank">this link</a>. 
+        Choose the approriate download depending on your operating system and then click install and follow the onscreen instructions.
+        To check if Node has been correctly installed, open a terminal and type <em>node --version</em>. If you see
+        a version number, Node has been correctly installed.
+    </p>
+    <p>
+        To run a JavaScript file, open a terminal and type <em>node [filename including extension]</em>. If for example your file is
+        called <em>app.js</em>, then you would enter the command <em>node app.js</em>.
+    </p>
+    <p>Example "hello world" program to run:</p>
+    <pre><code class="language-javascript">
+        console.log("Hello world");
+    </code></pre>
+    <h3>package.json</h3>
+    <p>
+        It is common to have a file called package.json in every Node project. package.json is a file formatted as JSON. The file can 
+        contain dependencies, in which case the dependencies will be installed when you type <em>npm install</em> in a terminal. npm is 
+        a package that was installed at the same time as Node.js. If you install a specific package via npm, the newly added dependency 
+        will also appear in package.json. package.json can also include metadata about for example the name of your package, version and other 
+        information. The file also contains the "main" property, which declares the main entry point of your package. 
+    </p>
+
