@@ -1,0 +1,124 @@
+<h3>What is Express</h3>
+<p>
+    Express is a Node.js web framework. You can use it to setup and run a server written in JavaScript. 
+    Express supports both static files and server side rendering. You can also create an API, where you send JSON as a response.
+</p>
+<h3>Installation</h3>
+<p>
+    Open the terminal in your project folder and type <em>npm install express</em>.
+    This will install the newest version of Express.
+</p>
+<h3>Quick start</h3>
+<p>
+    See the following code to get a server running. 
+</p>
+<pre>
+    <code class="language-javascript">
+        const express = require("express"); //import express
+        const app = express(); // create and assign an Express applican object which contains various functions
+
+        // start the server and make it listen on port 8080, optionally pass it a callback which will be run
+        // when the server starts
+        app.listen(8080, () => console.log("Server is running on port", 8080)); 
+    </code>
+</pre>
+<p>
+    This above code starts a server which listens for HTTP requests on port 8080. There isn't actually any routes yet. 
+    See the following sections for how to create routes and different types of responses.
+</p>
+<h3>Routes generally</h3>
+<p>
+    To create a route, write the following code.
+</p>
+<pre>
+    <code class="language-javascript">
+        // the first parameter is the endpoint and the second is a callback function
+        // the callback function should have two parameters. The first parameter (here called req)
+        // will contain a request object, while the second (res) will contain a response object. 
+        app.get("/hello", (req, res) {
+            //process request and send some response
+        });
+    </code>
+</pre>
+<pre>
+    In the above example, the route is for a HTTP GET request. The Express application object
+    similarily contains functions for other types of HTTP reqests like POST, PUT etc.
+    How to send a response depends on the type of content and whether you want to use
+    SSR or send static files.
+</pre>
+<h3>Send a JSON response</h3>
+<p>To send a JSON response, simply do it like the below code.</p>
+<pre>
+    <code class="language-javascript">
+        app.get("/get-json", (req, res) {
+            res.send({
+                property1 : "some value",
+                property2 : "another value"
+            });
+        });
+    </code>
+</pre>
+<h3>Send a static html file</h3>
+<p>To send a HTML file without any modification, do it like below</p>
+<pre>
+    <code class="language-javascript">
+        app.get("/get-html", (req, res) {
+            res.sendFile("/somePath");
+        });
+    </code>
+</pre>
+<h3>Server side rendering</h3>
+<p>
+    If you want to dynamically modify a HTML file before sending it with the response, 
+    you can do it using the below code.
+</p>
+
+<pre>
+    <code class="language-javascript">
+        const fs = require("fs");
+        // next three lines: load relevant HTML files and store them as strings
+        const nav = fs.readFileSync("/pathToNavHtmlFile").toString();
+        const footer = fs.readFileSync("/pathToFooterHtmlFile").toString();
+        const getSSR = fs.readFileSync("pathToMainContentHtmlFile").toString();
+        
+        // replace values in stored strings (from HTML files) and concatenate them.
+        // In this case, we concatenate our main HTML file with a header and a footer.
+        const ssrPage = nav.replace("valuesToReplace", "valuesToReplaceWith") + getSSR + footer; 
+        
+        
+        app.get("/get-ssr", (req, res) {
+            // send the HTML file (pass in a string)
+            res.send(ssrPage);
+        });
+    </code>
+</pre>
+<p>
+    As the above code illustrates, what is acutally passed to <em>res.send</em> is a string, which means you can
+    also just write HTML directly in the a string without actually loading anything from files.
+</p>
+<h3>Serving static files</h3>
+<p>
+    In order for example client side JavaScript and CSS files in external files to work, the clint
+    wil have to be able to fetch the files from the server. You do this by creating a folder on the server which you make
+    publicly available, also known as static folders and static files. See the below for an example.  
+</p>
+<pre>
+    <code class="language-javascript">
+        // make the directory named public at the root of the project static.
+        // afterwards every file in the directory and its subdiretories will be public
+        // and can be requested and fetched from the client.    
+        app.use(express.static("public"));
+    </code>
+</pre>
+<h3>Nodemon</h3>
+<p>
+    Normally you would run your Express server with the <em>node</em> command, but
+    if you modify some code, the server will need to be restarted in order for the
+    changes to have any effect. While you are developing the application, it can
+    be annoying to have to restart the server so often. To solve this is issue, you can
+    use a tool called Nodemon. Nodemon monitors for file changes in the project directory and
+    restarts the application automaticallt if any changes are detected. That also means that you will
+    use Nodemon to run the application while developing. To install a Nodemon, type <em>npm install nodemon</em>
+    in a terminal. To run a file with Nodemon, run the command <em>Nodemon app.js</em> or whatever your main file
+    is named. 
+</p>

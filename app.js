@@ -18,6 +18,9 @@ const variablesPage = nav.replace("%%DOCUMENT_TITLE%%", "Variables in JavaScript
 const callbacks = fs.readFileSync("./public/pages/callbacks/callbacks.html").toString();
 const callbacksPage = nav.replace("%%DOCUMENT_TITLE%%", "Callbacks") + callbacks + footer;
 
+const expressPage = fs.readFileSync("./public/pages/express/express.html").toString();
+const expressPagePage = nav.replace("%%DOCUMENT_TITLE%%", "Express") + expressPage + footer;
+
 
 app.get("/", (req, res) => {
     res.send(frontPagePage);
@@ -35,6 +38,9 @@ app.get("/callbacks", (req, res) => {
     res.send(callbacksPage);
 });
 
+app.get("/express", (req, res) => {
+    res.send(expressPagePage);
+});
 
 
 
