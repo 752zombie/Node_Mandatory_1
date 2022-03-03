@@ -1,0 +1,26 @@
+<h3>What is a callback</h3>
+<p>
+    A callback is a function passed as an argument to another function. Using callbacks makes it possible
+    to perfom reuse common behaviaor while at the same time addin new behavior. Another usecase is passing a callback
+    to a asynchronous function, which could then call the supplied function at a later point in time. 
+</p>
+<h3>Example</h3>
+<p>
+    A common usecase is wanting to perfom some operating after a specific amount of time. JavaScript includes a function called
+    <em>setTimeout</em> which has two parameters, one for callback and another for the amount of time that should be passed before
+    the callback is invoked. See the example below, which contains two approaches to the same problem, one that uses an anonymous function
+    and another which uses a regular function. 
+</p>
+<pre>
+    <code class="language-javascript">
+        function printHello() {
+            console.log("Hello");
+        }
+
+        // prints "hello" after 1 second using a regular function passed as callback
+        setTimeout(printHello, 1000); 
+
+        // prints "hello" after 2 seconds using an anonymous function passed as callback
+        setTimeout(() => console.log("Hello"), 2000);
+    </code>
+</pre>

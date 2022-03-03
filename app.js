@@ -15,6 +15,14 @@ const nodePage = nav.replace("%%DOCUMENT_TITLE%%", "Node.js") + node + footer;
 const variables = fs.readFileSync("./public/pages/variables/variables.html").toString();
 const variablesPage = nav.replace("%%DOCUMENT_TITLE%%", "Variables in JavaScript") + variables + footer;
 
+const callbacks = fs.readFileSync("./public/pages/callbacks/callbacks.html").toString();
+const callbacksPage = nav.replace("%%DOCUMENT_TITLE%%", "Callbacks") + callbacks + footer;
+
+
+app.get("/", (req, res) => {
+    res.send(frontPagePage);
+})
+
 app.get("/node", (req, res) => {
     res.send(nodePage);
 });
@@ -23,9 +31,11 @@ app.get("/variables", (req, res) => {
     res.send(variablesPage);
 });
 
-app.get("/", (req, res) => {
-    res.send(frontPagePage);
-})
+app.get("/callbacks", (req, res) => {
+    res.send(callbacksPage);
+});
+
+
 
 
 app.listen(8080, () => console.log("Server is running on port", 8080));
