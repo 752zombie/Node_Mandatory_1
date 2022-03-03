@@ -1,4 +1,22 @@
 #main-area {
-    margin-left: 35%;
-    margin-right: 35%;
+    margin-left: 33%;
+    margin-right: 33%;
+}
+
+nav {
+    background-color: green;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: larger;
+    margin-right: 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
 }

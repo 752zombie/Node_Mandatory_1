@@ -1,0 +1,39 @@
+<h3>Variables in JavaScript</h3>
+<p>
+    In JavaScript you can use three different keywords to declare a variable: <br>
+    - var <br>
+    - let <br>
+    - const
+</p>
+
+<h3>var</h3>
+<p>
+    Using var is the old way of writing JavaScript variables and is generally not recommened today.
+    When you declare a variable with <em>var</em>, the variable is global unless written in a function, which
+    means that is accessible from anywhere in the code. Variables declared with <em>var</em> is also always reassignable.
+</p>
+
+<h3>let and const</h3>
+<p>
+    Variables assigned with the <em>let</em> keyword are block scoped, which means that they are only
+    accessible in the block or nested block which they are declared in. The difference between <em>let</em> and <em>const</em>
+    is simply that variables declared with <em>let</em> are reassignable, while variables declared with <em>const</em> are not.
+</p>
+
+<h3>Example</h3>
+<p>
+    To illustrate the difference between <em>var</em> and <em>let</em>, consider the following code: <br>
+</p>
+<pre>
+    <code class="language-javascript">
+        {
+            let a = 7;
+        }
+        console.log(a); // produces an error because a is not declared in this scope
+        
+        {
+            var b = 7;
+        }
+        console.log(b); // prints 7
+    </code>
+</pre>
